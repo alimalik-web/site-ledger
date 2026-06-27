@@ -84,7 +84,15 @@ export function DeliveryTable({
                 <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
                   {formatShortDate(d.date)}
                 </td>
-                <td className="px-4 py-3 font-medium">{d.supplier}</td>
+                <td className="px-4 py-3">
+                  <p className="font-medium">{d.supplier}</p>
+                  {(d.supplierPhone || d.supplierAddress) && (
+                    <div className="flex flex-col gap-0.5 mt-0.5 text-[10px] text-muted-foreground">
+                      {d.supplierPhone && <span>📞 {d.supplierPhone}</span>}
+                      {d.supplierAddress && <span>📍 {d.supplierAddress}</span>}
+                    </div>
+                  )}
+                </td>
                 <td className="px-4 py-3 text-right whitespace-nowrap">
                   {d.quantity.toLocaleString()} {d.unit}
                 </td>

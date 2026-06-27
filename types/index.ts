@@ -12,6 +12,8 @@ export interface Laborer {
   type: LaborType;
   dailyRate?: number;       // used when type === 'daily'
   contractAmount?: number;  // used when type === 'contract'
+  phone?: string;
+  cnic?: string;
   createdAt: string;
 }
 
@@ -50,6 +52,8 @@ export interface MaterialDelivery {
   category: MaterialCategory;
   date: string;
   supplier: string;
+  supplierPhone?: string;
+  supplierAddress?: string;
   quantity: number;
   unit: string;             // 'bricks' | 'kg' | 'ton' | 'bags' | 'CFT' | 'item'
   pricePerUnit: number;

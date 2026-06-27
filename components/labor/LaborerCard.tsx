@@ -97,6 +97,13 @@ export function LaborerCard({
                     {laborer.type === 'daily' ? `₨ ${laborer.dailyRate?.toLocaleString()}/day` : 'Contract'}
                   </Badge>
                 </div>
+                {(laborer.phone || laborer.cnic) && (
+                  <div className="flex items-center gap-2 mt-1 text-[10px] text-muted-foreground">
+                    {laborer.phone && <span>📞 {laborer.phone}</span>}
+                    {laborer.phone && laborer.cnic && <span className="text-muted-foreground/30">|</span>}
+                    {laborer.cnic && <span>🆔 {laborer.cnic}</span>}
+                  </div>
+                )}
               </div>
             </div>
 

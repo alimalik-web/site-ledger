@@ -35,6 +35,8 @@ export function LaborerForm({ open, onClose, onSubmit, initial }: LaborerFormPro
   const [contractAmount, setContractAmount] = useState(
     String(initial?.contractAmount ?? '')
   );
+  const [phone, setPhone] = useState(initial?.phone ?? '');
+  const [cnic, setCnic] = useState(initial?.cnic ?? '');
   const [saving, setSaving] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,6 +48,8 @@ export function LaborerForm({ open, onClose, onSubmit, initial }: LaborerFormPro
       type,
       dailyRate: type === 'daily' ? Number(dailyRate) : undefined,
       contractAmount: type === 'contract' ? Number(contractAmount) : undefined,
+      phone: phone.trim() || undefined,
+      cnic: cnic.trim() || undefined,
     });
     setSaving(false);
     onClose();
@@ -78,6 +82,27 @@ export function LaborerForm({ open, onClose, onSubmit, initial }: LaborerFormPro
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 required
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="phone">Phone Number (Optional)</Label>
+              <Input
+                id="phone"
+                placeholder="03xx-xxxxxxx"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="cnic">CNIC (Optional)</Label>
+              <Input
+                id="cnic"
+                placeholder="xxxxx-xxxxxxx-x"
+                value={cnic}
+                onChange={(e) => setCnic(e.target.value)}
               />
             </div>
           </div>

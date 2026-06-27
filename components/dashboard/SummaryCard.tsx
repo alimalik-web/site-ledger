@@ -36,8 +36,7 @@ export function SummaryCard({
       {/* Background gradient accent */}
       <div
         className={cn(
-          'absolute top-0 right-0 w-32 h-32 rounded-full -translate-y-12 translate-x-12 opacity-10',
-          iconBg
+          'absolute top-0 right-0 w-32 h-32 rounded-full -translate-y-12 translate-x-12 opacity-[0.03] bg-foreground'
         )}
       />
 
@@ -59,8 +58,8 @@ export function SummaryCard({
           )}
         </div>
 
-        <div className={cn('p-2.5 rounded-lg shrink-0', iconBg)}>
-          <Icon className={cn('w-5 h-5', iconColor)} />
+        <div className="p-2.5 rounded-xl shrink-0 bg-muted/50 border border-border/50">
+          <Icon className="w-[18px] h-[18px] text-muted-foreground" />
         </div>
       </div>
     </div>

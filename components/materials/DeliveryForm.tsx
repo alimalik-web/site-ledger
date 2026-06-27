@@ -52,6 +52,8 @@ export function DeliveryForm({
   const units = UNITS[category];
   const [date, setDate] = useState(initial?.date ?? toISODate(new Date()));
   const [supplier, setSupplier] = useState(initial?.supplier ?? '');
+  const [supplierPhone, setSupplierPhone] = useState(initial?.supplierPhone ?? '');
+  const [supplierAddress, setSupplierAddress] = useState(initial?.supplierAddress ?? '');
   const [quantity, setQuantity] = useState(String(initial?.quantity ?? ''));
   const [unit, setUnit] = useState(initial?.unit ?? units[0]);
   const [pricePerUnit, setPricePerUnit] = useState(String(initial?.pricePerUnit ?? ''));
@@ -68,6 +70,8 @@ export function DeliveryForm({
       category,
       date,
       supplier: supplier.trim(),
+      supplierPhone: supplierPhone.trim() || undefined,
+      supplierAddress: supplierAddress.trim() || undefined,
       quantity: Number(quantity),
       unit,
       pricePerUnit: Number(pricePerUnit),
@@ -107,6 +111,27 @@ export function DeliveryForm({
                 value={supplier}
                 onChange={(e) => setSupplier(e.target.value)}
                 required
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="d-phone">Supplier Phone (Optional)</Label>
+              <Input
+                id="d-phone"
+                placeholder="03xx-xxxxxxx"
+                value={supplierPhone}
+                onChange={(e) => setSupplierPhone(e.target.value)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="d-address">Supplier Address (Optional)</Label>
+              <Input
+                id="d-address"
+                placeholder="e.g. Main Bazar"
+                value={supplierAddress}
+                onChange={(e) => setSupplierAddress(e.target.value)}
               />
             </div>
           </div>
